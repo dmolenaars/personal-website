@@ -10,7 +10,7 @@ import './style.scss';
  */
 const Content = () => (
   <Parallax pages={2}>
-    <ParallaxLayer offset={0.97} speed={0}>
+    <ParallaxLayer offset={0.94} speed={0}>
       <div className="content-container">
         <Body />
       </div>
