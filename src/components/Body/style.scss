@@ -1,0 +1,94 @@
+a:link,
+a:visited {
+  color: #181818;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+  color: white;
+}
+
+h1 {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 3.5em;
+  line-height: 41px;
+  width: 100;
+  height: 100;
+  font-weight: bold;
+}
+
+.description, .link {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 2.2em;
+  color: #181818;
+  display: block;
+  font-weight: 400;
+}
+
+.main-content {
+  margin: 0 10%;
+  max-width: 100%;
+}
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 1.8em;
+    line-height: 30px;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  .description, .link {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-device-width: 351px) and (max-device-width: 767px) {
+  /* For mobile phones: */
+  h1 {
+    font-size: 2.2em;
+    line-height: 30px;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  .description, .link {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-device-width: 768px) and (max-device-width: 1023px) {
+  h1 {
+    font-size: 2.4em;
+  }
+
+  .header {
+    font-size: 2.4em;
+  }
+
+  .subheader {
+    font-size: 2.5em;
+  }
+
+  .description, .link {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-device-width: 1024px) and (max-device-width: 1280px) {
+  h1 {
+    font-size: 2.8em;
+  }
+  .header {
+    font-size: 3.5em;
+  }
+
+  .subheader {
+    font-size: 3em;
+  }
+
+  .description, .link {
+    font-size: 1.7em;
+  }
+}

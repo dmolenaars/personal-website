@@ -1,0 +1,25 @@
+.content-container {
+  background-color: #e63c77;
+  width: 100vw;
+  height: 103vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  justify-content: center;
+  animation: color-change 60s infinite;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: #f99;
+  }
+  33% {
+    background-color: #9f9;
+  }
+  67% {
+    background-color: #99f;
+  }
+  100% {
+    background-color: #f99;
+  }
+}

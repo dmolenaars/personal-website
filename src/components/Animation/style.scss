@@ -1,0 +1,91 @@
+@use "sass:map";
+
+svg {
+  width: 50%;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+@media only screen and (max-width: 1024px) {
+  /* For mobile phones: */
+  svg {
+    width: 70%;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+rect {
+  opacity: 0;
+  animation: expand 1s forwards;
+}
+
+@keyframes expand {
+    0% {
+      opacity: 1;
+      width: 0;
+    }
+    100% {
+      opacity: 1;
+      width: 1;
+    }
+  }
+
+/*
+//////////////////
+/// Explanation //
+//////////////////
+
+Start of coding animation manipulation. 
+Individual code line animations (and their subsegments) are increasingly delayed to simulate a typing effect.
+
+///////////////////
+// Configuration //
+///////////////////
+
+global-animation-delay: the start point of the animation in seconds.
+total-code-lines: the amount of lines of code to set an animation delay for.
+code-segments-per-line: the number of segments to set an animation delay for, where the key equals the line number. 
+                        If no segments are specified, it is assumed one line will need to be delayed. 
+*/
+
+$global-animation-delay: 2.5;
+$total-code-lines: 6;
+$code-segments-per-line: (
+  "1": (1,2,3,4),
+  "2": (1,2,3),
+);
+
+// For lines which contain multiple segments, add an increasing animation delay for every segment.
+@mixin add-code-segment-animation-delays($line, $code-segments) {
+  @each $code-segment in $code-segments {
+    $global-animation-delay: ($global-animation-delay + 0.5) !global;
+    #line-#{$line} #segment-#{$code-segment} {
+      animation-delay: #{$global-animation-delay}s;
+    }
+  }
+}
+
+// Increasingly delay the animation of code lines.
+@mixin add-code-line-animation-delay($line) {
+  $contains-code-segments: map.get($code-segments-per-line, #{$line});
+  @if $contains-code-segments {
+    @include add-code-segment-animation-delays($line, $contains-code-segments);
+  } @else {
+    $global-animation-delay: ($global-animation-delay + 0.5) !global;
+    #line-#{$line} {
+      animation-delay: #{$global-animation-delay}s;
+    }
+  }
+}
+
+// Add animation delays to six lines of code.
+@mixin generate-animation-delays() {
+  @for $line from 1 through $total-code-lines {
+    @include add-code-line-animation-delay($line);
+  }
+}
+
+@include generate-animation-delays;
